@@ -44,9 +44,9 @@ namespace SasaUtility
         /// </summary>
         /// <param name="path">png‚ÌƒpƒX</param>
         /// <param name="tex">Texture</param>
-        public static void ConvertToPngAndSave(string path, Texture2D tex2d)
+        public static void ConvertToPngAndSave(string path, Texture2D tex2d, bool debug = false)
         {
-            Debug.Log(path);
+            if(debug)Debug.Log(path);
             //Texture2D‚É•ÏŠ·
             //Texture2D Image2D = _RawImage.texture as Texture2D;
             //Png‚É•ÏŠ·
