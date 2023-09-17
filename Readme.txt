@@ -1,0 +1,4 @@
+Version: v1.0.0
+
+Libralies:
+UniRx v7.1.0
