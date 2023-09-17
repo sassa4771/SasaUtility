@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace SasaUtility
 {
-    public class Texture2Png : MonoBehaviour
+    public static class Texture2Png
     {
 
         /// <summary>
@@ -12,7 +12,7 @@ namespace SasaUtility
         /// </summary>
         /// <param name="path">pngのパス</param>
         /// <param name="tex">Texture</param>
-        protected void ConvertToPngAndSave(string path, RawImage _rawImage)
+        public static void ConvertToPngAndSave(string path, RawImage _rawImage)
         {
             Debug.Log(path);
             //Texture2Dに変換
@@ -28,7 +28,7 @@ namespace SasaUtility
         /// </summary>
         /// <param name="path">pngのパス</param>
         /// <param name="tex">Texture</param>
-        protected void ConvertToPngAndSave(string path, Texture tex)
+        public static void ConvertToPngAndSave(string path, Texture tex)
         {
             Debug.Log(path);
             //Texture2Dに変換
@@ -44,7 +44,7 @@ namespace SasaUtility
         /// </summary>
         /// <param name="path">pngのパス</param>
         /// <param name="tex">Texture</param>
-        protected void ConvertToPngAndSave(string path, Texture2D tex2d)
+        public static void ConvertToPngAndSave(string path, Texture2D tex2d)
         {
             Debug.Log(path);
             //Texture2Dに変換
@@ -60,7 +60,7 @@ namespace SasaUtility
         /// </summary>
         /// <param name="path">pngのパス</param>
         /// <param name="image">UnityEngine.UI.Image</param>
-        protected void ConvertToTextureAndLoad(string path, Image image)
+        public static void ConvertToTextureAndLoad(string path, Image image)
         {
             //読み込み
             byte[] bytes = File.ReadAllBytes(path);
@@ -77,7 +77,7 @@ namespace SasaUtility
         /// </summary>
         /// <param name="_rawImage"></param>
         /// <returns></returns>
-        private byte[] RawImageToPNG(RawImage _rawImage)
+        private static byte[] RawImageToPNG(RawImage _rawImage)
         {
             byte[] bytes = TextureToPNG(_rawImage.texture);
 
@@ -89,7 +89,7 @@ namespace SasaUtility
         /// </summary>
         /// <param name="tex"></param>
         /// <returns></returns>
-        private byte[] TextureToPNG(Texture tex)
+        private static byte[] TextureToPNG(Texture tex)
         {
             Texture2D tex2d = new Texture2D(tex.width, tex.height, TextureFormat.ARGB32, false);
             RenderTexture.active = (RenderTexture)tex;
@@ -107,7 +107,7 @@ namespace SasaUtility
         /// </summary>
         /// <param name="tex2D"></param>
         /// <returns></returns>
-        private byte[] Texture2DToPNG(Texture2D tex2d)
+        private static byte[] Texture2DToPNG(Texture2D tex2d)
         {
             tex2d.ReadPixels(new Rect(0, 0, tex2d.width, tex2d.height), 0, 0, false);
             tex2d.Apply(false, false);

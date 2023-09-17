@@ -4,22 +4,25 @@ using UniRx.Triggers;
 using UniRx;
 using TMPro;
 
-public class ChangeText : MonoBehaviour
+namespace SasaUtility.Demo
 {
-    [SerializeField] private Button _saveButton;
-    [SerializeField] private Button _loadButton;
-    [SerializeField] private TextMeshProUGUI _text;
-
-    void Start()
+    public class ChangeText : MonoBehaviour
     {
-        //セーブボタン
-        _saveButton.OnPointerClickAsObservable().Subscribe(_ => textChange("Image Saved!")).AddTo(this);
-        //ロードボタン
-        _loadButton.OnPointerClickAsObservable().Subscribe(_ => textChange("Image Load!")).AddTo(this);
-    }
+        [SerializeField] private Button _saveButton;
+        [SerializeField] private Button _loadButton;
+        [SerializeField] private TextMeshProUGUI _text;
 
-    private void textChange(string changeText)
-    {
-        _text.text = changeText;
+        void Start()
+        {
+            //セーブボタン
+            _saveButton.OnPointerClickAsObservable().Subscribe(_ => textChange("Image Saved!")).AddTo(this);
+            //ロードボタン
+            _loadButton.OnPointerClickAsObservable().Subscribe(_ => textChange("Image Load!")).AddTo(this);
+        }
+
+        private void textChange(string changeText)
+        {
+            _text.text = changeText;
+        }
     }
 }

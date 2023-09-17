@@ -40,5 +40,41 @@ namespace SasaUtility
             string filename = TodayNow.Year.ToString() + "." + TodayNow.Month.ToString("D2") + "." + TodayNow.Day.ToString("D2") + "_" + TodayNow.Hour.ToString("D2") + "." + TodayNow.Minute.ToString("D2") + "." + TodayNow.Second.ToString("D2");
             return filename;
         }
+
+        /// <summary>
+        /// sourceFolderPathからdestinationFolderPathにフォルダーごとコピーするメソッド
+        /// </summary>
+        /// <param name="sourceFolderPath"></param>
+        /// <param name="destinationFolderPath"></param>
+        /// <returns>成功時はコピー先のパスを返却</returns>
+        public static string CopyDirectory(string sourceFolderPath, string destinationFolderPath)
+        {
+            if (!Directory.Exists(sourceFolderPath))
+            {
+                Debug.LogError("Source folder does not exist!");
+                return null;
+            }
+
+            Debug.Log(sourceFolderPath);
+            string newFolderPath = destinationFolderPath + "/" + Path.GetFileName(sourceFolderPath);
+            
+            if (!Directory.Exists(newFolderPath))
+            {
+                Directory.CreateDirectory(newFolderPath);
+            }
+
+            string[] files = Directory.GetFiles(sourceFolderPath);
+            Debug.Log(files[0]);
+
+            foreach (string file in files)
+            {
+                Debug.Log(file);
+                string fileName = Path.GetFileName(file);
+                string newFilePath = Path.Combine(newFolderPath, fileName);
+                File.Copy(file, newFilePath, true);
+            }
+
+            return newFolderPath;
+        }
     }
 }
