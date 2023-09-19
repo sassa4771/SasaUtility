@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace SasaUtility
 {
@@ -35,14 +36,14 @@ namespace SasaUtility
         }
 
         /// <summary>
-        /// 日付を付けたユニークなファイル名の作成
-        /// 例：2023.05.28_14.08.01
+        /// 日付を付けたユニークなファイル名の作成（ミリセカンドまで表示）
+        /// 例：2023.05.28_14.08.01.614
         /// </summary>
         /// <returns>DateTimeの文字列</returns>
         public static string GetDateTimeFileName()
         {
             DateTime TodayNow = DateTime.Now;
-            string filename = TodayNow.Year.ToString() + "." + TodayNow.Month.ToString("D2") + "." + TodayNow.Day.ToString("D2") + "_" + TodayNow.Hour.ToString("D2") + "." + TodayNow.Minute.ToString("D2") + "." + TodayNow.Second.ToString("D2");
+            string filename = TodayNow.Year.ToString() + "." + TodayNow.Month.ToString("D2") + "." + TodayNow.Day.ToString("D2") + "_" + TodayNow.Hour.ToString("D2") + "." + TodayNow.Minute.ToString("D2") + "." + TodayNow.Second.ToString("D2") + "." + TodayNow.Millisecond.ToString("D2");
             return filename;
         }
 
@@ -94,6 +95,7 @@ namespace SasaUtility
 
         /// <summary>
         /// 選択した拡張子と同じファイルを一つ取得するメソッド
+        /// 一番新しいファイルを返却
         /// </summary>
         /// <param name="sourceFolderPath">フォルダパス</param>
         /// <param name="type">拡張子</param>
@@ -101,6 +103,7 @@ namespace SasaUtility
         public static string GetOneFilePath(string sourceFolderPath, string extension)
         {
             string[] files = Directory.GetFiles(sourceFolderPath);
+            List<string> videoFilePath = new List<string>();
 
             foreach (string file in files)
             {
@@ -110,10 +113,11 @@ namespace SasaUtility
                     Debug.Log(file);
                     string fileName = Path.GetFileName(file);
                     string newFilePath = Path.Combine(sourceFolderPath, fileName);
-
-                    return newFilePath;
+                    videoFilePath.Add(newFilePath);
                 }
             }
+
+            if (videoFilePath.Count > 0) return videoFilePath[videoFilePath.Count - 1];
 
             return null;
         }

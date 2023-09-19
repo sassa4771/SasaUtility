@@ -118,17 +118,18 @@ namespace SasaUtility
                 while (!IsReady) yield return null;
 
                 string[] savePath = new string[splitImage];
+                string previousImage = null;
+
                 int count = 0;
                 int frameCount = 0;
-                int previosFrame = 0;
+                int previosFrame = -1;
 
                 //Debug.Log(maxFrame / 32);
                 while(count < splitImage) {
-                    if (count==0 || File.Exists(savePath[count-1]))
+                    if (previousImage == null || File.Exists(previousImage))
                     {
                         if (seekDone)
                         {
-                            frameCount += maxFrame / splitImage;
                             vp.frame = frameCount;
                             // You should pause while you seek for better stability
                             vp.Pause();
@@ -136,12 +137,16 @@ namespace SasaUtility
 
                             if (vp.frame == previosFrame) vp.frame = frameCount + 1;
                             if (vp.frame == 0) vp.frame = 1;
-                             yield return new WaitForSeconds(1);
+                             yield return null;
 
-                            savePath[count] = SaveVideoPlayerFrame(folderPath);
-                            Debug.Log("frameCount: " + frameCount + ", frame: " + vp.frame + ", previous: " + previosFrame);
-                            count++;
-                            previosFrame = frameCount;
+                            if (vp.frame != previosFrame)
+                            {
+                                previousImage = SaveVideoPlayerFrame(folderPath);
+                                Debug.Log("frameCount: " + frameCount + ", frame: " + vp.frame + ", previous: " + previosFrame);
+                                count++;
+                                previosFrame = frameCount;
+                                frameCount += maxFrame / splitImage;
+                            }
                         }
                     }
                     yield return null;

@@ -567,6 +567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ca15d2222ce864e9ab1c3c6390d43c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  filepath: C:/Users/hurob/Documents/Unity/TernTableApp_2022.05.30/Assets/Plugins/SasaUtility.v1.4.0/Demo/VideoFrameSplitter/Videos/SampleVideo.mp4
 --- !u!1 &964160507
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,6 +1016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ca15d2222ce864e9ab1c3c6390d43c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  filepath: C:/Users/hurob/Documents/Unity/TernTableApp_2022.05.30/Assets/Plugins/SasaUtility.v1.4.0/Demo/VideoFrameSplitter/Videos/SampleVideo.mp4
 --- !u!114 &1707043725
 MonoBehaviour:
   m_ObjectHideFlags: 0
