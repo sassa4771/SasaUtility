@@ -31,6 +31,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 977428468132448276}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -68,7 +69,8 @@ MonoBehaviour:
   m_text: "\u30C7\u30FC\u30BF\u3092\u4FDD\u5B58\u3057\u307E\u3057\u305F\u3002"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c9bcde81856084379bbd821472217918, type: 2}
-  m_sharedMaterial: {fileID: 2856582860495312482, guid: c9bcde81856084379bbd821472217918, type: 2}
+  m_sharedMaterial: {fileID: 2856582860495312482, guid: c9bcde81856084379bbd821472217918,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -168,6 +170,7 @@ RectTransform:
   m_Children:
   - {fileID: 977428467264232852}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
