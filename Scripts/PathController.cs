@@ -1,31 +1,32 @@
 using System;
 using System.IO;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace SasaUtility
 {
     /// <summary>
-    /// フォルダーやファイルを作成し、パスを管理するためのクラス
+    /// ?t?H???_?[???t?@?C???????????A?p?X?????????????????N???X
     /// </summary>
     public static class PathController
     {
         ///  /// <summary>
-        /// 保存先のApplication.persistentDataPathを取得するメソッド
-        /// フォルダが存在しない場合は作成する
+        /// ????????Application.persistentDataPath?????????????\?b?h
+        /// ?t?H???_??????????????????????????
         /// </summary>
-        /// <param name="folderName">区切りのフォルダ名</param>
-        /// <param name="ExtensionName">拡張子名</param>
-        /// <returns>保存先のパス</returns>
+        /// <param name="folderName">?????????t?H???_??</param>
+        /// <param name="ExtensionName">?g???q??</param>
+        /// <returns>?????????p?X</returns>
         public static string GetSavePath(string folderName, string ExtensionName, bool persistent = true)
         {
             string directoryPath = Application.persistentDataPath + "/" + folderName + "/";
             
-            //完全なパスの場合
+            //???S???p?X??????
             if (!persistent) directoryPath = folderName + "/";
 
                 if (!Directory.Exists(directoryPath))
             {
-                //まだ存在してなかったら作成
+                //??????????????????????????
                 Directory.CreateDirectory(directoryPath);
                 return directoryPath + GetDateTimeFileName() + "." + ExtensionName;
             }
@@ -35,23 +36,23 @@ namespace SasaUtility
         }
 
         /// <summary>
-        /// 日付を付けたユニークなファイル名の作成
-        /// 例：2023.05.28_14.08.01
+        /// ???t???t???????j?[?N???t?@?C???????????i?~???Z?J???h?????\???j
+        /// ???F2023.05.28_14.08.01.614
         /// </summary>
-        /// <returns>DateTimeの文字列</returns>
+        /// <returns>DateTime????????</returns>
         public static string GetDateTimeFileName()
         {
             DateTime TodayNow = DateTime.Now;
-            string filename = TodayNow.Year.ToString() + "." + TodayNow.Month.ToString("D2") + "." + TodayNow.Day.ToString("D2") + "_" + TodayNow.Hour.ToString("D2") + "." + TodayNow.Minute.ToString("D2") + "." + TodayNow.Second.ToString("D2");
+            string filename = TodayNow.Year.ToString() + "." + TodayNow.Month.ToString("D2") + "." + TodayNow.Day.ToString("D2") + "_" + TodayNow.Hour.ToString("D2") + "." + TodayNow.Minute.ToString("D2") + "." + TodayNow.Second.ToString("D2") + "." + TodayNow.Millisecond.ToString("D2");
             return filename;
         }
 
         /// <summary>
-        /// sourceFolderPathからdestinationFolderPathにフォルダーごとコピーするメソッド
+        /// sourceFolderPath????destinationFolderPath???t?H???_?[?????R?s?[???????\?b?h
         /// </summary>
         /// <param name="sourceFolderPath"></param>
         /// <param name="destinationFolderPath"></param>
-        /// <returns>成功時はコピー先のパスを返却</returns>
+        /// <returns>?????????R?s?[?????p?X?????p</returns>
         public static string CopyDirectory(string sourceFolderPath, string destinationFolderPath)
         {
             string newFolderPath = CreateDirectory(sourceFolderPath, destinationFolderPath);
@@ -78,12 +79,14 @@ namespace SasaUtility
             foreach (string file in files)
             {
                 string extension = System.IO.Path.GetExtension(file);
-                if (extension == type)
+
+                string getfile = GetOneFilePath(sourceFolderPath, type);
+                if (getfile != null)
                 {
-                    Debug.Log(file);
+                    Debug.Log(getfile);
                     string fileName = Path.GetFileName(file);
                     string newFilePath = Path.Combine(destinationFolderPath, fileName);
-                    File.Copy(file, newFilePath, true);
+                    File.Copy(getfile, newFilePath, true);
 
                     return newFilePath;
                 }
@@ -93,14 +96,16 @@ namespace SasaUtility
         }
 
         /// <summary>
-        /// 選択した拡張子と同じファイルを一つ取得するメソッド
+        /// ?I???????g???q???????t?@?C???????????????????\?b?h
+        /// ?????V?????t?@?C???????p
         /// </summary>
-        /// <param name="sourceFolderPath">フォルダパス</param>
-        /// <param name="type">拡張子</param>
+        /// <param name="sourceFolderPath">?t?H???_?p?X</param>
+        /// <param name="type">?g???q</param>
         /// <returns></returns>
         public static string GetOneFilePath(string sourceFolderPath, string extension)
         {
             string[] files = Directory.GetFiles(sourceFolderPath);
+            List<string> videoFilePath = new List<string>();
 
             foreach (string file in files)
             {
@@ -110,16 +115,43 @@ namespace SasaUtility
                     Debug.Log(file);
                     string fileName = Path.GetFileName(file);
                     string newFilePath = Path.Combine(sourceFolderPath, fileName);
-
-                    return newFilePath;
+                    videoFilePath.Add(newFilePath);
                 }
             }
+
+            if (videoFilePath.Count > 0) return videoFilePath[videoFilePath.Count - 1];
 
             return null;
         }
 
         /// <summary>
-        /// フォルダを新しく作成するメソッド
+        /// ?????g???q???t?@?C?????????????????J?E???g???????\?b?h
+        /// </summary>
+        /// <param name="sourceFolderPath"></param>
+        /// <param name="extension">".mp4"</param>
+        /// <returns></returns>
+        public static int CountFileExtentino(string sourceFolderPath, string extension)
+        {
+            string[] files = Directory.GetFiles(sourceFolderPath);
+            List<string> videoFilePath = new List<string>();
+
+            foreach (string file in files)
+            {
+                string type = System.IO.Path.GetExtension(file);
+                if (type == extension)
+                {
+                    Debug.Log(file);
+                    string fileName = Path.GetFileName(file);
+                    string newFilePath = Path.Combine(sourceFolderPath, fileName);
+                    videoFilePath.Add(newFilePath);
+                }
+            }
+
+            return videoFilePath.Count;
+        }
+
+        /// <summary>
+        /// ?t?H???_???V???????????????\?b?h
         /// </summary>
         /// <param name="sourceFolderPath"></param>
         /// <param name="destinationFolderPath"></param>
@@ -138,7 +170,7 @@ namespace SasaUtility
             int count = 1;
             string tempPath = newFolderPath;
 
-            // フォルダがある場合は、名前を変更する
+            // ?t?H???_?????????????A???O?????X????
             while (Directory.Exists(newFolderPath))
             {
                 newFolderPath = tempPath + " (" + count + ")";
