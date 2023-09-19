@@ -1,4 +1,5 @@
-Version: v1.4.0
+Version: v1.4.0 AVPro MovieCapture
 
 Libralies:
 UniRx v7.1.0
+AVPRO_MOVIECAPTURE_WEBCAMTEXTURE_SUPPORT v5.1.8
