@@ -31,7 +31,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2979226422478065878}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -68,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c9bcde81856084379bbd821472217918, type: 2}
+  m_sharedMaterial: {fileID: 2856582860495312482, guid: c9bcde81856084379bbd821472217918, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -168,7 +167,6 @@ RectTransform:
   m_Children:
   - {fileID: 6789319652843030090}
   m_Father: {fileID: 1125790476738823561}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -262,6 +260,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 977428467264232852, guid: a6416a0ea9653419f928380e468cc46e, type: 3}
@@ -361,6 +360,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 977428468132448276, guid: a6416a0ea9653419f928380e468cc46e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2979226422478065878}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6416a0ea9653419f928380e468cc46e, type: 3}
 --- !u!224 &1125790476738823561 stripped
 RectTransform:
