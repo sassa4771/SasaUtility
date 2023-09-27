@@ -7,29 +7,29 @@ public class EditorWindowSample : EditorWindow
     private Vector3 currentMoveDirection = Vector3.zero; // 現在の移動方向
     private float moveSpeed = 2.0f; // 移動速度の初期値
 
-    [MenuItem("Editor/Sample")]
+    [MenuItem("SassaUtility/Demo/EditorWindowSample")]
     private static void Create()
     {
         // 生成
-        EditorWindowSample window = GetWindow<EditorWindowSample>("サンプル");
+        EditorWindowSample window = GetWindow<EditorWindowSample>("EditorWindowSample");
     }
 
     private void OnGUI()
     {
         // EditorWindowのサイズを調整
-        float windowHeight = 205f; // ウィンドウの高さを適宜調整
+        float windowHeight = 220f; // ウィンドウの高さを適宜調整
         float windowWidth = 400f; // ウィンドウの幅を適宜調整
         this.minSize = new Vector2(windowWidth, windowHeight);
 
+        // 選択中のオブジェクトを表示
+        GUILayout.Label("選択中のオブジェクト: " + (cubeObject != null ? cubeObject.name : "なし"));
+
         // Cubeオブジェクトを読み込むボタン (黄色)
         GUI.backgroundColor = Color.yellow;
-        // Cubeオブジェクトを読み込むボタン
-        if (GUILayout.Button("Inspector上のCubeオブジェクトを読み込む"))
+        // 選択中のオブジェクトをHierarchyから選択するボタン
+        if (GUILayout.Button("Hierarchyから選択"))
         {
-            cubeObject = GameObject.Find("Cube"); // Cubeオブジェクトを取得
-
-            if (cubeObject != null) Debug.Log("Cubeを読み込みました。操作可能です。");
-            else Debug.LogError("Cubeが見つかりません。Hierarchy上にCubeオブジェクトが存在することを確認してください。");
+            cubeObject = (GameObject)Selection.activeObject;
         }
         GUI.backgroundColor = Color.white; // 色を元に戻す
 
