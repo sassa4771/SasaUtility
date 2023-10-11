@@ -94,7 +94,7 @@ namespace SasaUtility.Demo.Original
                     vp.Pause();
                     seekDone = false;
                     yield return new WaitForSeconds(1);
-                    string path = SaveVideoPlayerFrame(Application.persistentDataPath + "/" + folderPath);
+                    string path = SaveVideoPlayerFrame(folderPath);
 
                     Debug.Log("file://" + path);
                     if (callback != null) callback.Invoke();
@@ -171,7 +171,7 @@ namespace SasaUtility.Demo.Original
             tex.ReadPixels(new Rect(0, 0, tex.width, tex.height), 0, 0);
             tex.Apply();
 
-            string savePath = PathController.GetSavePath(folderPath, "png", false);
+            string savePath = PathController.GetSavePath(folderPath, "png");
             Texture2Png.ConvertToPngAndSave(savePath, tex);
 
             Debug.Log(vp.frame);
