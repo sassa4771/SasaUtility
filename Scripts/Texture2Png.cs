@@ -8,72 +8,72 @@ namespace SasaUtility
     {
 
         /// <summary>
-        /// RawImageを画像に変換＆保存
+        /// RawImage??????????????????
         /// </summary>
-        /// <param name="path">pngのパス</param>
+        /// <param name="path">png???p?X</param>
         /// <param name="tex">Texture</param>
         public static void ConvertToPngAndSave(string path, RawImage _rawImage)
         {
             Debug.Log(path);
-            //Texture2Dに変換
+            //Texture2D??????
             //Texture2D Image2D = _RawImage.texture as Texture2D;
-            //Pngに変換
+            //Png??????
             byte[] bytes = RawImageToPNG(_rawImage);
-            //保存
+            //????
             File.WriteAllBytes(path, bytes);
         }
 
         /// <summary>
-        /// Textureを画像に変換＆保存
+        /// Texture??????????????????
         /// </summary>
-        /// <param name="path">pngのパス</param>
+        /// <param name="path">png???p?X</param>
         /// <param name="tex">Texture</param>
         public static void ConvertToPngAndSave(string path, Texture tex)
         {
             Debug.Log(path);
-            //Texture2Dに変換
+            //Texture2D??????
             //Texture2D Image2D = _RawImage.texture as Texture2D;
-            //Pngに変換
+            //Png??????
             byte[] bytes = TextureToPNG(tex);
-            //保存
+            //????
             File.WriteAllBytes(path, bytes);
         }
 
         /// <summary>
-        /// Texture2Dを画像に変換＆保存
+        /// Texture2D??????????????????
         /// </summary>
-        /// <param name="path">pngのパス</param>
+        /// <param name="path">png???p?X</param>
         /// <param name="tex">Texture</param>
         public static void ConvertToPngAndSave(string path, Texture2D tex2d, bool debug = false)
         {
             if(debug)Debug.Log(path);
-            //Texture2Dに変換
+            //Texture2D??????
             //Texture2D Image2D = _RawImage.texture as Texture2D;
-            //Pngに変換
+            //Png??????
             byte[] bytes = Texture2DToPNG(tex2d);
-            //保存
+            //????
             File.WriteAllBytes(path, bytes);
         }
 
         /// <summary>
-        /// 選択したパスの画像をimageスプライトに変換・表示するスクリプト
+        /// ?I???????p?X????????image?X?v???C?g???????E?\???????X?N???v?g
         /// </summary>
-        /// <param name="path">pngのパス</param>
+        /// <param name="path">png???p?X</param>
         /// <param name="image">UnityEngine.UI.Image</param>
         public static void ConvertToTextureAndLoad(string path, Image image)
         {
-            //読み込み
+            //????????
             byte[] bytes = File.ReadAllBytes(path);
-            //画像をテクスチャに変換
+            //???????e?N?X?`????????
             Texture2D loadTexture = new Texture2D(2, 2);
             loadTexture.LoadImage(bytes);
 
-            //テクスチャをスプライトに変換
+            //?e?N?X?`?????X?v???C?g??????
             image.sprite = Sprite.Create(loadTexture, new Rect(0, 0, loadTexture.width, loadTexture.height), Vector2.zero);
         }
 
         /// <summary>
-        /// RawImageをPNGにエンコードするメソッド
+        /// RawImage??PNG???G???R?[?h???????\?b?h
         /// </summary>
         /// <param name="_rawImage"></param>
         /// <returns></returns>
@@ -85,7 +85,7 @@ namespace SasaUtility
         }
         
         /// <summary>
-        /// TextureをPNGにエンコードするメソッド
+        /// Texture??PNG???G???R?[?h???????\?b?h
         /// </summary>
         /// <param name="tex"></param>
         /// <returns></returns>
@@ -103,7 +103,7 @@ namespace SasaUtility
         }
 
         /// <summary>
-        /// Texutre2DをPNGにエンコードするメソッド
+        /// Texutre2D??PNG???G???R?[?h???????\?b?h
         /// </summary>
         /// <param name="tex2D"></param>
         /// <returns></returns>
