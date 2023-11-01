@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Demo/Http-Communication.meta
+guid: 4ff43d20fe7ed46f4ad68f14f46d6013
+========
 guid: 3ec5343b139a94e84bbaa9ff745006dd
+>>>>>>>> Original:Demo/Original.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

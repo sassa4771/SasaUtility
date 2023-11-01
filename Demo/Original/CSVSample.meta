@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Demo/Original.meta
+guid: 3ec5343b139a94e84bbaa9ff745006dd
+========
 guid: 796e5ba04c1b8464f82ac2d2880fdbc3
+>>>>>>>> Original:Demo/Original/CSVSample.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
