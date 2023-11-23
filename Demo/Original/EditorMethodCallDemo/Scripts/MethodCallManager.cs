@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEditor;
@@ -19,29 +19,29 @@ namespace SasaUtility.Demo
 
         private void Start()
         {
-            // Hierarchyã‚Ì‚·‚×‚Ä‚ÌƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚ğæ“¾
+            // Hierarchyä¸Šã®ã™ã¹ã¦ã®ã‚²ãƒ¼ãƒ ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—
             GameObject[] gameObjects = GameObject.FindObjectsOfType<GameObject>();
 
             foreach (GameObject go in gameObjects)
             {
-                // ƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚©‚çƒRƒ“ƒ|[ƒlƒ“ƒg‚ğæ“¾
+                // ã‚²ãƒ¼ãƒ ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã‚’å–å¾—
                 Component[] components = go.GetComponents<Component>();
 
                 foreach (Component component in components)
                 {
-                    // ƒRƒ“ƒ|[ƒlƒ“ƒg“à‚Ìƒƒ\ƒbƒh‚ğæ“¾
+                    // ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆå†…ã®ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å–å¾—
                     MethodInfo[] methods = component.GetType().GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 
                     foreach (MethodInfo method in methods)
                     {
-                        // [Sassa]‘®«‚ª•t‚¢‚Ä‚¢‚éƒƒ\ƒbƒh‚ğ’T‚·
+                        // [Sassa]å±æ€§ãŒä»˜ã„ã¦ã„ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã‚’æ¢ã™
                         if (Attribute.IsDefined(method, typeof(EditorCallMethodAttribute)))
                         {
                             EditorCallMethodAttribute editorCallMethodAttribute = (EditorCallMethodAttribute)Attribute.GetCustomAttribute(method, typeof(EditorCallMethodAttribute));
 
-                            Debug.Log($"component: {component.name}, [EditorCallMethod]‘®«‚ª•t‚¢‚Ä‚¢‚éƒƒ\ƒbƒh: {method.Name}, à–¾: {editorCallMethodAttribute.Description}");
+                            Debug.Log($"component: {component.name}, [EditorCallMethod]å±æ€§ãŒä»˜ã„ã¦ã„ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰: {method.Name}, èª¬æ˜: {editorCallMethodAttribute.Description}");
 
-                            // Component‚ÆMethod‚ÌƒyƒA‚ğƒŠƒXƒg‚É’Ç‰Á
+                            // Componentã¨Methodã®ãƒšã‚¢ã‚’ãƒªã‚¹ãƒˆã«è¿½åŠ 
                             componentMethodPairs.Add(new ComponentMethodPair
                             {
                                 Component = component,
@@ -52,7 +52,7 @@ namespace SasaUtility.Demo
                 }
             }
 
-            // ƒƒ\ƒbƒh‚ğŒÄ‚Ño‚·
+            // ãƒ¡ã‚½ãƒƒãƒ‰ã‚’å‘¼ã³å‡ºã™
             foreach (var pair in componentMethodPairs)
             {
                 pair.Method.Invoke(pair.Component, null);

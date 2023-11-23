@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +16,7 @@ public class CreateModal : MonoBehaviour
         GameObject instance = Instantiate(FadeoutModal, Vector2.zero, Quaternion.identity, ModalArea);
         TextMeshProUGUI text = instance.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
         string filename = PathController.GetDateTimeFileName();
-        text.text = filename + "‚ÉFadeoutModal‚ğì¬‚µ‚Ü‚µ‚½B";
+        text.text = filename + "ã«FadeoutModalã‚’ä½œæˆã—ã¾ã—ãŸã€‚";
     }
 
     public void OnClickCreateFadeoutModalButton()
@@ -24,7 +24,7 @@ public class CreateModal : MonoBehaviour
         GameObject instance = Instantiate(FadeoutModalButton, Vector2.zero, Quaternion.identity, ModalArea);
         TextMeshProUGUI text = instance.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
         string filename = PathController.GetDateTimeFileName();
-        text.text = filename + "‚ÉFadeoutModalButton‚ğì¬‚µ‚Ü‚µ‚½B";
+        text.text = filename + "ã«FadeoutModalButtonã‚’ä½œæˆã—ã¾ã—ãŸã€‚";
         Button button = instance.transform.Find("Button").GetComponent<Button>();
         button.onClick.AddListener(ButtonCick);
     }

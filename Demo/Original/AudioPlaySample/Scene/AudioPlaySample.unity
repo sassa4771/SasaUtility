@@ -342,13 +342,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1084967342}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b369646bcf52346348dd6cff95b8fa9a, type: 3}
+  m_Script: {fileID: 11500000, guid: dff7dfe78fa1ee1499bf02463a739ad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   filename:
-  - "Hiragana/\u3042.wav"
-  - "Hiragana/\u3044.wav"
-  - "Hiragana/\u3046.wav"
-  - "Hiragana/\u3048.wav"
-  - "Hiragana/\u304A.wav"
-  - "Hiragana/\u304D\u3083.wav"
+  - "\u3042.wav"
+  - "\u3044.wav"
+  - "\u3046.wav"
+  - "\u3048.wav"
+  - "\u304A.wav"

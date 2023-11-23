@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,7 +14,7 @@ namespace SasaUtility.Demo.Original
     {
         [SerializeField] private Button PlayButton;
         [SerializeField] private Button PauseButton;
-        [SerializeField] private RawImage rawImage; //?f?????\??????RawImage
+        [SerializeField] private RawImage rawImage; //映像を表示するRawImage
         [SerializeField] private Slider slider;
         [SerializeField] private Slider visualslider;
         [SerializeField] private Slider TrimSliderStart;
@@ -99,7 +99,7 @@ namespace SasaUtility.Demo.Original
         }
 
         /// <summary>
-        /// videoPlayer?????????????????????o?????????\?b?h
+        /// videoPlayerの準備ができたら呼び出されるメソッド
         /// </summary>
         /// <param name="source"></param>
         private void OnVideoPrepared(VideoPlayer source)
@@ -107,7 +107,7 @@ namespace SasaUtility.Demo.Original
             rawImage.texture = source.texture;
             source.Play();
 
-            //???????????t???[????????
+            //動画の最大フレームを取得
             maxFrame = (int)vp.frameCount;
             Debug.Log("Max Frame: " + maxFrame);
         }
@@ -137,7 +137,7 @@ namespace SasaUtility.Demo.Original
             isTouching = true;
         }
 
-        // ?????????n???h?????}?E?X?N???b?N???^?b?v????????????
+        // マウスクリックやタップが離された時
         public void OnPointerUp()
         {
             if (isTouching)

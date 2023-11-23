@@ -1,6 +1,7 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 using UnityEditor.Callbacks;
+#if UNITY_IOS
 using UnityEditor.iOS.Xcode;
 using System.IO;
 
@@ -29,3 +30,5 @@ public class PostBuildProcess_iOS
         plist.WriteToFile(path);
     }
 }
+
+#endif

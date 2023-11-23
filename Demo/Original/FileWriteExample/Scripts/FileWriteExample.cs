@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.IO;
 using System.Threading.Tasks;
 using System;
@@ -13,6 +13,7 @@ namespace SasaUtility.Demo.Original
         private async void Start()
         {
             string filePath = Path.Combine(Application.persistentDataPath, "example.txt");
+            Debug.Log($"filePath: {filePath}");
 
             string[] lines = {
             "Line 1",

@@ -1,4 +1,4 @@
-
+ï»¿
 using System;
 using System.CodeDom;
 using System.Collections;
@@ -24,22 +24,22 @@ namespace SasaUtility.Demo
         [MenuItem("SassaUtility/Demo/MethodCallEditor")]
         private static void Create()
         {
-            // ¶¬
+            // ç”Ÿæˆ
             MethodCallEditor window = GetWindow<MethodCallEditor>("MethodCallEditor");
         }
 
         private void OnGUI()
         {
-            // EditorWindow‚ÌƒTƒCƒY‚ğ’²®
-            float windowHeight = 220f; // ƒEƒBƒ“ƒhƒE‚Ì‚‚³‚ğ“K‹X’²®
-            float windowWidth = 400f; // ƒEƒBƒ“ƒhƒE‚Ì•‚ğ“K‹X’²®
+            // EditorWindowã®ã‚µã‚¤ã‚ºã‚’èª¿æ•´
+            float windowHeight = 220f; // ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®é«˜ã•ã‚’é©å®œèª¿æ•´
+            float windowWidth = 400f; // ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®å¹…ã‚’é©å®œèª¿æ•´
             this.minSize = new Vector2(windowWidth, windowHeight);
 
-            // CubeƒIƒuƒWƒFƒNƒg‚ğ“Ç‚İ‚Şƒ{ƒ^ƒ“ (‰©F)
+            // Cubeã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’èª­ã¿è¾¼ã‚€ãƒœã‚¿ãƒ³ (é»„è‰²)
             GUI.backgroundColor = Color.yellow;
 
-            // ‘I‘ğ’†‚ÌƒIƒuƒWƒFƒNƒg‚ğHierarchy‚©‚ç‘I‘ğ‚·‚éƒ{ƒ^ƒ“
-            if (GUILayout.Button("Method‚ğæ“¾‚·‚é"))
+            // é¸æŠä¸­ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’Hierarchyã‹ã‚‰é¸æŠã™ã‚‹ãƒœã‚¿ãƒ³
+            if (GUILayout.Button("Methodã‚’å–å¾—ã™ã‚‹"))
             {
                 FindMethod();
             }
@@ -47,13 +47,13 @@ namespace SasaUtility.Demo
             GUI.backgroundColor = Color.white;
             using (new GUILayout.HorizontalScope(EditorStyles.toolbar))
             {
-                GUILayout.Label("æ“¾‚µ‚½ƒƒ\ƒbƒh");
+                GUILayout.Label("å–å¾—ã—ãŸãƒ¡ã‚½ãƒƒãƒ‰");
             }
 
-            //XZƒRƒ“ƒgƒ[ƒ‰
+            //XZã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©
             using (new GUILayout.VerticalScope())
             {
-                // æ“¾‚µ‚½ƒƒ\ƒbƒh‚ğ•\¦‚µAƒ{ƒ^ƒ“‚ÅŒÄ‚Ño‚·
+                // å–å¾—ã—ãŸãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¡¨ç¤ºã—ã€ãƒœã‚¿ãƒ³ã§å‘¼ã³å‡ºã™
                 GUI.backgroundColor = Color.white;
                 foreach (ComponentMethodPair methodpair in componentMethodPairs)
                 {
@@ -69,7 +69,7 @@ namespace SasaUtility.Demo
 
         private void FindMethod()
         {
-            // ƒ{ƒ^ƒ“‚ğƒNƒŠƒbƒN‚µ‚½‚Æ‚«‚Ìˆ—‚ğ‚±‚±‚ÉˆÚ“®
+            // ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ãŸã¨ãã®å‡¦ç†ã‚’ã“ã“ã«ç§»å‹•
             componentMethodPairs.Clear();
 
             GameObject[] gameObjects = GameObject.FindObjectsOfType<GameObject>();
@@ -88,7 +88,7 @@ namespace SasaUtility.Demo
                         {
                             EditorCallMethodAttribute editorCallMethodAttribute = (EditorCallMethodAttribute)Attribute.GetCustomAttribute(method, typeof(EditorCallMethodAttribute));
 
-                            Debug.Log($"component: {component.name}, [EditorCallMethod]‘®«‚ª•t‚¢‚Ä‚¢‚éƒƒ\ƒbƒh: {method.Name}, à–¾: {editorCallMethodAttribute.Description}");
+                            Debug.Log($"component: {component.name}, [EditorCallMethod]å±æ€§ãŒä»˜ã„ã¦ã„ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰: {method.Name}, èª¬æ˜: {editorCallMethodAttribute.Description}");
 
                             componentMethodPairs.Add(new ComponentMethodPair
                             {
@@ -103,19 +103,19 @@ namespace SasaUtility.Demo
 
         private void OnEnable()
         {
-            // 5•b‚²‚Æ‚ÉuMethod‚ğæ“¾‚·‚évƒ{ƒ^ƒ“‚ğƒNƒŠƒbƒN‚·‚é
+            // 5ç§’ã”ã¨ã«ã€ŒMethodã‚’å–å¾—ã™ã‚‹ã€ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹
             EditorApplication.update += UpdateButtonAutomatically;
         }
 
         private void OnDisable()
         {
-            // ƒEƒBƒ“ƒhƒE‚ª–³Œø‚É‚È‚Á‚½‚ç©“®ƒNƒŠƒbƒN‚ğ’â~‚·‚é
+            // ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒç„¡åŠ¹ã«ãªã£ãŸã‚‰è‡ªå‹•ã‚¯ãƒªãƒƒã‚¯ã‚’åœæ­¢ã™ã‚‹
             EditorApplication.update -= UpdateButtonAutomatically;
         }
 
         private void UpdateButtonAutomatically()
         {
-            // 5•b‚²‚Æ‚ÉuMethod‚ğæ“¾‚·‚évƒ{ƒ^ƒ“‚ğƒNƒŠƒbƒN
+            // 5ç§’ã”ã¨ã«ã€ŒMethodã‚’å–å¾—ã™ã‚‹ã€ãƒœã‚¿ãƒ³ã‚’ã‚¯ãƒªãƒƒã‚¯
             if (Time.realtimeSinceStartup % 5.0f < Time.deltaTime)
             {
                 FindMethod();
