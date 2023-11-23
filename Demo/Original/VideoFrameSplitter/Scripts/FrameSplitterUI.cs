@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
@@ -40,7 +40,7 @@ namespace SasaUtility.Demo.Original
             string outputPath = Path.Combine(Application.persistentDataPath, IMAGE_SAVE_FOLDER + "/" + PathController.GetDateTimeFileName());
             yield return StartCoroutine(frameSplitter.VideoSplit(outputPath));
 
-            // ƒTƒ€ƒlƒCƒ‹‚ª¶¬‚³‚ê‚½Œã‚ÉƒtƒHƒ‹ƒ_‚ğŠJ‚­
+            // ã‚µãƒ ãƒã‚¤ãƒ«ãŒç”Ÿæˆã•ã‚ŒãŸå¾Œã«ãƒ•ã‚©ãƒ«ãƒ€ã‚’é–‹ã
             OpenFolder(outputPath);
         }
 
@@ -51,21 +51,21 @@ namespace SasaUtility.Demo.Original
 
             yield return StartCoroutine(frameSplitter.GetFirstFrame(outputPath));
 
-            // ƒTƒ€ƒlƒCƒ‹‚ª¶¬‚³‚ê‚½Œã‚ÉƒtƒHƒ‹ƒ_‚ğŠJ‚­
+            // ã‚µãƒ ãƒã‚¤ãƒ«ãŒç”Ÿæˆã•ã‚ŒãŸå¾Œã«ãƒ•ã‚©ãƒ«ãƒ€ã‚’é–‹ã
             OpenFolder(outputPath);
         }
 
         void OpenFolder(string folderPath)
         {
-            // ƒtƒHƒ‹ƒ_‚ª‘¶İ‚·‚é‚©Šm”F
+            // ãƒ•ã‚©ãƒ«ãƒ€ãŒå­˜åœ¨ã™ã‚‹ã‹ç¢ºèª
             if (Directory.Exists(folderPath))
             {
-                // ƒtƒHƒ‹ƒ_‚ğŠJ‚­
+                // ãƒ•ã‚©ãƒ«ãƒ€ã‚’é–‹ã
                 Process.Start(folderPath);
             }
             else
             {
-                UnityEngine.Debug.LogError("ƒtƒHƒ‹ƒ_‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ: " + folderPath);
+                UnityEngine.Debug.LogError("ãƒ•ã‚©ãƒ«ãƒ€ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“: " + folderPath);
             }
         }
 

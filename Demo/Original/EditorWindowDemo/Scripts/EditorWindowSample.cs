@@ -1,164 +1,164 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEditor;
 
 public class EditorWindowSample : EditorWindow
 {
-    private GameObject cubeObject; // CubeƒIƒuƒWƒFƒNƒg‚ÌQÆ
-    private Vector3 currentMoveDirection = Vector3.zero; // Œ»İ‚ÌˆÚ“®•ûŒü
-    private float moveSpeed = 2.0f; // ˆÚ“®‘¬“x‚Ì‰Šú’l
+    private GameObject cubeObject; // Cubeã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‚ç…§
+    private Vector3 currentMoveDirection = Vector3.zero; // ç¾åœ¨ã®ç§»å‹•æ–¹å‘
+    private float moveSpeed = 2.0f; // ç§»å‹•é€Ÿåº¦ã®åˆæœŸå€¤
 
     [MenuItem("SassaUtility/Demo/EditorWindowSample")]
     private static void Create()
     {
-        // ¶¬
+        // ç”Ÿæˆ
         EditorWindowSample window = GetWindow<EditorWindowSample>("EditorWindowSample");
     }
 
     private void OnGUI()
     {
-        // EditorWindow‚ÌƒTƒCƒY‚ğ’²®
-        float windowHeight = 220f; // ƒEƒBƒ“ƒhƒE‚Ì‚‚³‚ğ“K‹X’²®
-        float windowWidth = 400f; // ƒEƒBƒ“ƒhƒE‚Ì•‚ğ“K‹X’²®
+        // EditorWindowã®ã‚µã‚¤ã‚ºã‚’èª¿æ•´
+        float windowHeight = 220f; // ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®é«˜ã•ã‚’é©å®œèª¿æ•´
+        float windowWidth = 400f; // ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®å¹…ã‚’é©å®œèª¿æ•´
         this.minSize = new Vector2(windowWidth, windowHeight);
 
-        // ‘I‘ğ’†‚ÌƒIƒuƒWƒFƒNƒg‚ğ•\¦
-        GUILayout.Label("‘I‘ğ’†‚ÌƒIƒuƒWƒFƒNƒg: " + (cubeObject != null ? cubeObject.name : "‚È‚µ"));
+        // é¸æŠä¸­ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’è¡¨ç¤º
+        GUILayout.Label("é¸æŠä¸­ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ: " + (cubeObject != null ? cubeObject.name : "ãªã—"));
 
-        // CubeƒIƒuƒWƒFƒNƒg‚ğ“Ç‚İ‚Şƒ{ƒ^ƒ“ (‰©F)
+        // Cubeã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’èª­ã¿è¾¼ã‚€ãƒœã‚¿ãƒ³ (é»„è‰²)
         GUI.backgroundColor = Color.yellow;
-        // ‘I‘ğ’†‚ÌƒIƒuƒWƒFƒNƒg‚ğHierarchy‚©‚ç‘I‘ğ‚·‚éƒ{ƒ^ƒ“
-        if (GUILayout.Button("Hierarchy‚©‚ç‘I‘ğ"))
+        // é¸æŠä¸­ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’Hierarchyã‹ã‚‰é¸æŠã™ã‚‹ãƒœã‚¿ãƒ³
+        if (GUILayout.Button("Hierarchyã‹ã‚‰é¸æŠ"))
         {
             cubeObject = (GameObject)Selection.activeObject;
         }
-        GUI.backgroundColor = Color.white; // F‚ğŒ³‚É–ß‚·
+        GUI.backgroundColor = Color.white; // è‰²ã‚’å…ƒã«æˆ»ã™
 
         using (new GUILayout.VerticalScope(EditorStyles.helpBox))
         {
             using (new GUILayout.HorizontalScope(EditorStyles.toolbar))
             {
-                GUILayout.Label("Cube‚ÌˆÚ“®");
+                GUILayout.Label("Cubeã®ç§»å‹•");
             }
 
-            GUILayout.Space(10); // ƒXƒy[ƒX‚ğ‘}“ü
+            GUILayout.Space(10); // ã‚¹ãƒšãƒ¼ã‚¹ã‚’æŒ¿å…¥
 
-            //ƒRƒ“ƒgƒ[ƒ‰
+            //ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©
             using (new GUILayout.HorizontalScope())
             {
-                //XZƒRƒ“ƒgƒ[ƒ‰
+                //XZã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©
                 using (new GUILayout.VerticalScope())
                 {
                     using (new GUILayout.HorizontalScope())
                     {
-                        GUILayout.FlexibleSpace(); // ƒ{ƒ^ƒ“‚ğ’†‰›‚É”z’u‚·‚é‚½‚ß‚Ì—]”’
+                        GUILayout.FlexibleSpace(); // ãƒœã‚¿ãƒ³ã‚’ä¸­å¤®ã«é…ç½®ã™ã‚‹ãŸã‚ã®ä½™ç™½
 
-                        // ã‚ÉˆÚ“®‚·‚éƒ{ƒ^ƒ“
-                        if (GUILayout.RepeatButton("z²ƒvƒ‰ƒX•ûŒü", GUILayout.Width(100)))
+                        // ä¸Šã«ç§»å‹•ã™ã‚‹ãƒœã‚¿ãƒ³
+                        if (GUILayout.RepeatButton("zè»¸ãƒ—ãƒ©ã‚¹æ–¹å‘", GUILayout.Width(100)))
                         {
                             currentMoveDirection = Vector3.forward;
                         }
 
-                        GUILayout.FlexibleSpace(); // ƒ{ƒ^ƒ“‚ğ’†‰›‚É”z’u‚·‚é‚½‚ß‚Ì—]”’
+                        GUILayout.FlexibleSpace(); // ãƒœã‚¿ãƒ³ã‚’ä¸­å¤®ã«é…ç½®ã™ã‚‹ãŸã‚ã®ä½™ç™½
                     }
 
                     using (new GUILayout.HorizontalScope())
                     {
-                        GUILayout.FlexibleSpace(); // ƒ{ƒ^ƒ“‚ğ’†‰›‚É”z’u‚·‚é‚½‚ß‚Ì—]”’
+                        GUILayout.FlexibleSpace(); // ãƒœã‚¿ãƒ³ã‚’ä¸­å¤®ã«é…ç½®ã™ã‚‹ãŸã‚ã®ä½™ç™½
 
-                        // ¶‚ÉˆÚ“®‚·‚éƒ{ƒ^ƒ“
-                        if (GUILayout.RepeatButton("x²ƒ}ƒCƒiƒX•ûŒü", GUILayout.Width(100)))
+                        // å·¦ã«ç§»å‹•ã™ã‚‹ãƒœã‚¿ãƒ³
+                        if (GUILayout.RepeatButton("xè»¸ãƒã‚¤ãƒŠã‚¹æ–¹å‘", GUILayout.Width(100)))
                         {
                             currentMoveDirection = Vector3.left;
                         }
 
-                        GUILayout.FlexibleSpace(); // ƒ{ƒ^ƒ“‚ğ’†‰›‚É”z’u‚·‚é‚½‚ß‚Ì—]”’
+                        GUILayout.FlexibleSpace(); // ãƒœã‚¿ãƒ³ã‚’ä¸­å¤®ã«é…ç½®ã™ã‚‹ãŸã‚ã®ä½™ç™½
 
-                        // ‰E‚ÉˆÚ“®‚·‚éƒ{ƒ^ƒ“
-                        if (GUILayout.RepeatButton("x²ƒvƒ‰ƒX•ûŒü", GUILayout.Width(100)))
+                        // å³ã«ç§»å‹•ã™ã‚‹ãƒœã‚¿ãƒ³
+                        if (GUILayout.RepeatButton("xè»¸ãƒ—ãƒ©ã‚¹æ–¹å‘", GUILayout.Width(100)))
                         {
                             currentMoveDirection = Vector3.right;
                         }
 
-                        GUILayout.FlexibleSpace(); // ƒ{ƒ^ƒ“‚ğ’†‰›‚É”z’u‚·‚é‚½‚ß‚Ì—]”’
+                        GUILayout.FlexibleSpace(); // ãƒœã‚¿ãƒ³ã‚’ä¸­å¤®ã«é…ç½®ã™ã‚‹ãŸã‚ã®ä½™ç™½
                     }
 
                     using (new GUILayout.HorizontalScope())
                     {
-                        GUILayout.FlexibleSpace(); // ƒ{ƒ^ƒ“‚ğ’†‰›‚É”z’u‚·‚é‚½‚ß‚Ì—]”’
+                        GUILayout.FlexibleSpace(); // ãƒœã‚¿ãƒ³ã‚’ä¸­å¤®ã«é…ç½®ã™ã‚‹ãŸã‚ã®ä½™ç™½
 
-                        // ‰º‚ÉˆÚ“®‚·‚éƒ{ƒ^ƒ“
-                        if (GUILayout.RepeatButton("z²ƒ}ƒCƒiƒX•ûŒü", GUILayout.Width(100)))
+                        // ä¸‹ã«ç§»å‹•ã™ã‚‹ãƒœã‚¿ãƒ³
+                        if (GUILayout.RepeatButton("zè»¸ãƒã‚¤ãƒŠã‚¹æ–¹å‘", GUILayout.Width(100)))
                         {
                             currentMoveDirection = Vector3.back;
                         }
 
-                        GUILayout.FlexibleSpace(); // ƒ{ƒ^ƒ“‚ğ’†‰›‚É”z’u‚·‚é‚½‚ß‚Ì—]”’
+                        GUILayout.FlexibleSpace(); // ãƒœã‚¿ãƒ³ã‚’ä¸­å¤®ã«é…ç½®ã™ã‚‹ãŸã‚ã®ä½™ç™½
                     }
                 }
-                //YƒRƒ“ƒgƒ[ƒ‰
+                //Yã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©
                 using (new GUILayout.VerticalScope())
                 {
                     using (new GUILayout.HorizontalScope())
                     {
-                        GUILayout.FlexibleSpace(); // ƒ{ƒ^ƒ“‚ğ’†‰›‚É”z’u‚·‚é‚½‚ß‚Ì—]”’
+                        GUILayout.FlexibleSpace(); // ãƒœã‚¿ãƒ³ã‚’ä¸­å¤®ã«é…ç½®ã™ã‚‹ãŸã‚ã®ä½™ç™½
 
-                        // ã‚ÉˆÚ“®‚·‚éƒ{ƒ^ƒ“
-                        if (GUILayout.RepeatButton("y²ƒvƒ‰ƒX•ûŒü", GUILayout.Width(100)))
+                        // ä¸Šã«ç§»å‹•ã™ã‚‹ãƒœã‚¿ãƒ³
+                        if (GUILayout.RepeatButton("yè»¸ãƒ—ãƒ©ã‚¹æ–¹å‘", GUILayout.Width(100)))
                         {
                             currentMoveDirection = Vector3.up;
                         }
 
-                        GUILayout.FlexibleSpace(); // ƒ{ƒ^ƒ“‚ğ’†‰›‚É”z’u‚·‚é‚½‚ß‚Ì—]”’
+                        GUILayout.FlexibleSpace(); // ãƒœã‚¿ãƒ³ã‚’ä¸­å¤®ã«é…ç½®ã™ã‚‹ãŸã‚ã®ä½™ç™½
                     }
-                    GUILayout.Space(20); // ƒXƒy[ƒX‚ğ‘}“ü
+                    GUILayout.Space(20); // ã‚¹ãƒšãƒ¼ã‚¹ã‚’æŒ¿å…¥
 
                     using (new GUILayout.HorizontalScope())
                     {
-                        GUILayout.FlexibleSpace(); // ƒ{ƒ^ƒ“‚ğ’†‰›‚É”z’u‚·‚é‚½‚ß‚Ì—]”’
+                        GUILayout.FlexibleSpace(); // ãƒœã‚¿ãƒ³ã‚’ä¸­å¤®ã«é…ç½®ã™ã‚‹ãŸã‚ã®ä½™ç™½
 
-                        // ‰º‚ÉˆÚ“®‚·‚éƒ{ƒ^ƒ“
-                        if (GUILayout.RepeatButton("y²ƒ}ƒCƒiƒX•ûŒü", GUILayout.Width(100)))
+                        // ä¸‹ã«ç§»å‹•ã™ã‚‹ãƒœã‚¿ãƒ³
+                        if (GUILayout.RepeatButton("yè»¸ãƒã‚¤ãƒŠã‚¹æ–¹å‘", GUILayout.Width(100)))
                         {
                             currentMoveDirection = Vector3.down;
                         }
 
-                        GUILayout.FlexibleSpace(); // ƒ{ƒ^ƒ“‚ğ’†‰›‚É”z’u‚·‚é‚½‚ß‚Ì—]”’
+                        GUILayout.FlexibleSpace(); // ãƒœã‚¿ãƒ³ã‚’ä¸­å¤®ã«é…ç½®ã™ã‚‹ãŸã‚ã®ä½™ç™½
                     }
                 }
             }
 
-            GUILayout.Space(10); // ƒXƒy[ƒX‚ğ‘}“ü
+            GUILayout.Space(10); // ã‚¹ãƒšãƒ¼ã‚¹ã‚’æŒ¿å…¥
 
             using (new GUILayout.VerticalScope())
             {
-                // ˆÚ“®‘¬“x‚ğ’²®‚·‚éƒXƒ‰ƒCƒ_[
-                GUILayout.Label("ˆÚ“®‘¬“x: " + moveSpeed.ToString("F2"));
-                moveSpeed = GUILayout.HorizontalSlider(moveSpeed, 1.0f, 10.0f); // Å¬’l‚ÆÅ‘å’l‚ğ’²®
-                GUILayout.Space(20); // ƒXƒy[ƒX‚ğ‘}“ü
+                // ç§»å‹•é€Ÿåº¦ã‚’èª¿æ•´ã™ã‚‹ã‚¹ãƒ©ã‚¤ãƒ€ãƒ¼
+                GUILayout.Label("ç§»å‹•é€Ÿåº¦: " + moveSpeed.ToString("F2"));
+                moveSpeed = GUILayout.HorizontalSlider(moveSpeed, 1.0f, 10.0f); // æœ€å°å€¤ã¨æœ€å¤§å€¤ã‚’èª¿æ•´
+                GUILayout.Space(20); // ã‚¹ãƒšãƒ¼ã‚¹ã‚’æŒ¿å…¥
             }
 
             using (new GUILayout.HorizontalScope(GUI.skin.box))
             {
-                GUILayout.Label("ˆÚ“®‚Ì’â~‚ÆƒŠƒZƒbƒgF");
+                GUILayout.Label("ç§»å‹•ã®åœæ­¢ã¨ãƒªã‚»ãƒƒãƒˆï¼š");
 
-                // CubeƒIƒuƒWƒFƒNƒg‚ğ“Ç‚İ‚Şƒ{ƒ^ƒ“ (‰©F)
+                // Cubeã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’èª­ã¿è¾¼ã‚€ãƒœã‚¿ãƒ³ (é»„è‰²)
                 GUI.backgroundColor = Color.red;
-                // ˆÚ“®‚ğ’â~‚·‚éƒ{ƒ^ƒ“
-                if (GUILayout.Button("’â~"))
+                // ç§»å‹•ã‚’åœæ­¢ã™ã‚‹ãƒœã‚¿ãƒ³
+                if (GUILayout.Button("åœæ­¢"))
                 {
                     currentMoveDirection = Vector3.zero;
                 }
 
-                // CubeƒIƒuƒWƒFƒNƒg‚ğ“Ç‚İ‚Şƒ{ƒ^ƒ“ (‰©F)
+                // Cubeã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’èª­ã¿è¾¼ã‚€ãƒœã‚¿ãƒ³ (é»„è‰²)
                 GUI.backgroundColor = Color.blue;
 
-                GUILayout.Space(10); // ƒXƒy[ƒX‚ğ‘}“ü
+                GUILayout.Space(10); // ã‚¹ãƒšãƒ¼ã‚¹ã‚’æŒ¿å…¥
 
-                if (GUILayout.Button("ƒŠƒZƒbƒg"))
+                if (GUILayout.Button("ãƒªã‚»ãƒƒãƒˆ"))
                 {
                     ResetCubePosition();
                 }
-                // CubeƒIƒuƒWƒFƒNƒg‚ğ“Ç‚İ‚Şƒ{ƒ^ƒ“ (‰©F)
+                // Cubeã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’èª­ã¿è¾¼ã‚€ãƒœã‚¿ãƒ³ (é»„è‰²)
                 GUI.backgroundColor = Color.white;
             }
         }
@@ -169,7 +169,7 @@ public class EditorWindowSample : EditorWindow
     {
         if (cubeObject != null && currentMoveDirection != Vector3.zero)
         {
-            cubeObject.transform.Translate(currentMoveDirection * Time.deltaTime * moveSpeed); // ˆÚ“®‘¬“x‚ğ“K—p
+            cubeObject.transform.Translate(currentMoveDirection * Time.deltaTime * moveSpeed); // ç§»å‹•é€Ÿåº¦ã‚’é©ç”¨
         }
     }
 
@@ -177,11 +177,11 @@ public class EditorWindowSample : EditorWindow
     {
         if (cubeObject != null)
         {
-            cubeObject.transform.position = Vector3.zero; // Cube‚ÌˆÊ’u‚ğVector3.zero‚ÉƒŠƒZƒbƒg
+            cubeObject.transform.position = Vector3.zero; // Cubeã®ä½ç½®ã‚’Vector3.zeroã«ãƒªã‚»ãƒƒãƒˆ
         }
         else
         {
-            Debug.LogError("CubeƒIƒuƒWƒFƒNƒg‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB");
+            Debug.LogError("Cubeã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚");
         }
     }
 }

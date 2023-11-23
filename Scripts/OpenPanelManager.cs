@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 
@@ -9,7 +9,7 @@ namespace SasaUtility
         public static Text selectedFolderPathText;
 
         /// <summary>
-        /// ƒtƒHƒ‹ƒ_‘I‘ğƒpƒlƒ‹‚ğ•\¦‚µ‚ÄAƒpƒX‚ğæ“¾‚·‚éƒƒ\ƒbƒh
+        /// ãƒ•ã‚©ãƒ«ãƒ€é¸æŠãƒ‘ãƒãƒ«ã‚’è¡¨ç¤ºã—ã¦ã€ãƒ‘ã‚¹ã‚’å–å¾—ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰
         /// </summary>
         /// <returns></returns>
         public static string OpenFolderSelectionPanel()

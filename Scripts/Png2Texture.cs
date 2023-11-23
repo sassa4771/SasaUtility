@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
@@ -9,13 +9,13 @@ namespace SasaUtility
     public static class Png2Texture
     {
         /// <summary>
-        /// ƒeƒNƒXƒ`ƒƒ‚É•ÏŠ·•“Ç‚İ‚İ
+        /// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã«å¤‰æ›ï¼†èª­ã¿è¾¼ã¿
         /// </summary>
         public static Texture2D PngToTexture2D(string path)
         {
-            //“Ç‚İ‚İ
+            //èª­ã¿è¾¼ã¿
             byte[] bytes = File.ReadAllBytes(path);
-            //‰æ‘œ‚ğƒeƒNƒXƒ`ƒƒ‚É•ÏŠ·
+            //ç”»åƒã‚’ãƒ†ã‚¯ã‚¹ãƒãƒ£ã«å¤‰æ›
             Texture2D loadTexture = new Texture2D(2, 2);
             loadTexture.LoadImage(bytes);
 

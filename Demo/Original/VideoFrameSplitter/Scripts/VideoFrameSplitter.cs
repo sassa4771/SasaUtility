@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Video;
 using UnityEngine.UI;
@@ -9,7 +9,7 @@ using System.IO;
 namespace SasaUtility.Demo.Original
 {
     /// <summary>
-    /// VideoPlayer???g?p???????????t???[????PNG???????????N???X
+    /// VideoPlayerを使用して動画のフレームをPNGで保存するクラス
     /// </summary>
     public class VideoFrameSplitter : MonoBehaviour
     {
@@ -19,7 +19,7 @@ namespace SasaUtility.Demo.Original
          public int splitImage = 32;
         public bool isReady { get { return IsReady; } }
         [SerializeField] private bool ShowImage = false;
-        [SerializeField] private RawImage rawImage; //?f?????\??????RawImage
+        [SerializeField] private RawImage rawImage; //映像を表示するRawImage
 
         public VideoPlayer vp;
         public int maxFrame = 0;
@@ -42,7 +42,7 @@ namespace SasaUtility.Demo.Original
         }
 
         /// <summary>
-        /// ?t???[?????X?????????????????\?b?h
+        /// フレーム変更準備を監視するメソッド
         /// </summary>
         /// <param name="par"></param>
         void seekCompleted(VideoPlayer par)
@@ -51,7 +51,7 @@ namespace SasaUtility.Demo.Original
         }
 
         /// <summary>
-        /// ?t???[?????X?????????????????o?????????\?b?h
+        /// フレーム変更が完了したら呼び出されるメソッド
         /// </summary>
         /// <returns></returns>
         IEnumerator WaitToUpdateRenderTextureBeforeEndingSeek()
@@ -62,12 +62,12 @@ namespace SasaUtility.Demo.Original
         }
 
         /// <summary>
-        /// videoPlayer?????????????????????o?????????\?b?h
+        /// videoPlayerの準備ができたら呼び出されるメソッド
         /// </summary>
         /// <param name="source"></param>
         private void OnVideoPrepared(VideoPlayer source)
         {
-            //???????????t???[????????
+            //動画の最大フレームを取得
             maxFrame = (int)vp.frameCount;
             Debug.Log("Max Frame: " + maxFrame);
 
@@ -78,14 +78,14 @@ namespace SasaUtility.Demo.Original
         }
 
         /// <summary>
-        /// ???????t???[????????????png?????????????????\?b?h
+        /// 最初のフレームを取得してpngとして保存するメソッド
         /// </summary>
         /// <returns></returns>
         public IEnumerator GetFirstFrame(string folderPath, UnityAction callback = null)
         {
             if (vp.url != "")
             {
-                //???????I??????????????????
+                //準備が終わるまで処理をまつ
                 while (!IsReady) yield return null;
 
                 if (seekDone)
@@ -102,19 +102,19 @@ namespace SasaUtility.Demo.Original
             }
             else
             {
-                Debug.LogError("videoPlayer??url?????????Z?b?g???????????????B");
+                Debug.LogError("videoPlayerのurlに動画がセットされていません。");
             }
         }
 
         /// <summary>
-        /// videoPlayer????????splitImage?????????????????Apng??????????
+        /// videoPlayerの動画をsplitImageの回数で分割して、pngを保存する
         /// </summary>
         /// <returns></returns>
         public IEnumerator VideoSplit(string folderPath, UnityAction callback = null)
         {
             if (vp.url != "")
             {
-                //???????I??????????????????
+                //準備が終わるまで処理をまつ
                 while (!IsReady) yield return null;
 
                 string[] savePath = new string[splitImage];
@@ -156,14 +156,14 @@ namespace SasaUtility.Demo.Original
             }
             else
             {
-                Debug.LogError("videoPlayer??url?????????Z?b?g???????????????B");
+                Debug.LogError("videoPlayerのurlに動画がセットされていません。");
             }
-}
+        }
 
         /// <summary>
-        /// ??????videoPlayer??Frame??png?????????????????\?b?h
+        /// 現在のvideoPlayerのFrameをpngとして保存するメソッド
         /// </summary>
-        /// <returns>?????????p?X?????p</returns>
+        /// <returns>保存先のパスを返却</returns>
         string SaveVideoPlayerFrame(string folderPath)
         {
             Texture2D tex = new Texture2D((int)vp.texture.width, (int)vp.texture.height, TextureFormat.RGB24, false);
@@ -182,7 +182,7 @@ namespace SasaUtility.Demo.Original
         }
 
         /// <summary>
-        /// videoPlayer???????????????????\?b?h
+        /// videoPlayerに動画を設定するメソッド
         /// </summary>
         /// <param name="urlPath"></param>
         public void SetVideo(string urlPath)
