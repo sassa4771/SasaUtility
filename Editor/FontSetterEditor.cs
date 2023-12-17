@@ -1,4 +1,4 @@
-using TMPro;
+ï»¿using TMPro;
 using UnityEditor;
 using UnityEngine;
 
@@ -6,7 +6,7 @@ namespace SasaUtility
 {
     public class FontSetterEditor : EditorWindow
     {
-        private TMP_FontAsset yourFont; // g‚¢‚½‚¢ƒtƒHƒ“ƒg‚ğ‚±‚±‚ÉƒAƒTƒCƒ“‚µ‚Ä‚­‚¾‚³‚¢
+        private TMP_FontAsset yourFont; // ä½¿ã„ãŸã„ãƒ•ã‚©ãƒ³ãƒˆã‚’ã“ã“ã«ã‚¢ã‚µã‚¤ãƒ³ã—ã¦ãã ã•ã„
 
         [MenuItem("SasaUtility/Set Font for TextMeshProUGUI")]
         private static void ShowWindow()
